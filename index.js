@@ -10,6 +10,7 @@ const getCategory = (score, dementia) => {
 	const [washing, clothing, transfers, toilet, continence, meal, time, space] = r;
 
 	const washingAndClothing = washing >= 3 && clothing >= 3;
+	const washingOrClothing = washing >= 3 || clothing >= 3;
 	const timeAndSpace = time >= 3 && space >= 3;
 
 	if (
@@ -37,9 +38,9 @@ const getCategory = (score, dementia) => {
 		return 'B';
 	}
 
-	if (washing >= 3 || clothing >= 3) {
-		if (dementia) {
-			return 'D';
+	if (washingOrClothing && !dementia) {
+		if (timeAndSpace) {
+			return 'B';
 		}
 
 		return 'A';
