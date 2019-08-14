@@ -1,6 +1,10 @@
 import test from 'ava';
 import katzCategory from '.';
 
+test('should return undefined if score is not equal to 8', t => {
+	t.is(katzCategory('11'), undefined);
+});
+
 test('should detect category O', t => {
 	t.is(katzCategory('11111111'), 'O');
 	t.is(katzCategory('11222222'), 'O');
@@ -37,13 +41,18 @@ test('shoetect category D when category A with dementia', t => {
 	t.is(katzCategory('33222222', true), 'D');
 });
 
-test('should detect category B', t => {
+test('should detect category B which are physically dependent', t => {
 	t.is(katzCategory('33311111'), 'B');
 	t.is(katzCategory('33411111'), 'B');
 	t.is(katzCategory('33131111'), 'B');
 	t.is(katzCategory('33141111'), 'B');
+});
+
+test('should detect category B which are mentally dependent', t => {
 	t.is(katzCategory('33111133'), 'B');
 	t.is(katzCategory('33111144'), 'B');
+	t.is(katzCategory('32112233'), 'B');
+	t.is(katzCategory('23112243'), 'B');
 });
 
 test('should detect category D when category B with dementia', t => {
@@ -53,6 +62,7 @@ test('should detect category D when category B with dementia', t => {
 	t.is(katzCategory('33141111', true), 'D');
 	t.is(katzCategory('33111133', true), 'D');
 	t.is(katzCategory('33111144', true), 'D');
+	t.is(katzCategory('23112243', true), 'D');
 });
 
 test('should detect category C', t => {
