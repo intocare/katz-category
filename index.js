@@ -1,8 +1,12 @@
 'use strict';
 
 const getCategory = (score, dementia) => {
-	if (score.length !== 8) {
-		return;
+	if (score.length === 6) {
+		score += '11';
+	}
+
+	if (!/^\d{8}$/.test(score)) {
+		throw new Error(`Provided score should be numeric and have 6 or 8 digits.`);
 	}
 
 	const r = score.split('').map(x => parseInt(x, 10));

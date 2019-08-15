@@ -1,8 +1,17 @@
 import test from 'ava';
 import katzCategory from '.';
 
-test('should return undefined if score is not equal to 8', t => {
-	t.is(katzCategory('11'), undefined);
+test('should throw error if score is not numeric or is not equal to 6 or 8 digits', t => {
+	t.throws(() => katzCategory('11'), 'Provided score should be numeric and have 6 or 8 digits.');
+	t.throws(() => katzCategory('1111111'), 'Provided score should be numeric and have 6 or 8 digits.');
+	t.throws(() => katzCategory('1111111a'), 'Provided score should be numeric and have 6 or 8 digits.');
+});
+
+test('should set time and space to 1 if not provided', t => {
+	t.is(katzCategory('111111'), 'O');
+	t.is(katzCategory('111111', true), 'D');
+	t.is(katzCategory('333111'), 'B');
+	t.is(katzCategory('333131', true), 'CD');
 });
 
 test('should detect category O', t => {

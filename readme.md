@@ -31,7 +31,7 @@ katzCategory('33333111', true);
 
 Type: `string`
 
-An 8-digit string respresenting the KATZ score.
+A 6 or 8-digit string respresenting the KATZ score.
 
 #### dementia
 
