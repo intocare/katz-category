@@ -1,10 +1,17 @@
-import test from 'ava';
-import katzCategory from '.';
+'use strict';
+const test = require('ava');
+const katzCategory = require('.');
 
 test('should throw error if score is not numeric or is not equal to 6 or 8 digits', t => {
-	t.throws(() => katzCategory('11'), 'Provided score should be numeric and have 6 or 8 digits.');
-	t.throws(() => katzCategory('1111111'), 'Provided score should be numeric and have 6 or 8 digits.');
-	t.throws(() => katzCategory('1111111a'), 'Provided score should be numeric and have 6 or 8 digits.');
+	t.throws(() => katzCategory('11'), {
+		message: 'Provided score should be numeric and have 6 or 8 digits.'
+	});
+	t.throws(() => katzCategory('1111111'), {
+		message: 'Provided score should be numeric and have 6 or 8 digits.'
+	});
+	t.throws(() => katzCategory('1111111a'), {
+		message: 'Provided score should be numeric and have 6 or 8 digits.'
+	});
 });
 
 test('should set time and space to 1 if not provided', t => {

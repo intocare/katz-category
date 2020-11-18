@@ -17,6 +17,6 @@ declare const katzCategory: {
 	 * @returns The KATZ category.
 	 */
 	(score: string, dementia: boolean): Category;
-}
+};
 
 export default katzCategory;

@@ -6,10 +6,10 @@ const getCategory = (score, dementia) => {
 	}
 
 	if (!/^\d{8}$/.test(score)) {
-		throw new Error(`Provided score should be numeric and have 6 or 8 digits.`);
+		throw new Error('Provided score should be numeric and have 6 or 8 digits.');
 	}
 
-	const r = score.split('').map(x => parseInt(x, 10));
+	const r = score.split('').map(x => Number.parseInt(x, 10));
 
 	const [washing, clothing, transfers, toilet, continence, meal, time, space] = r;
 
