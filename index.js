@@ -50,6 +50,10 @@ const getCategory = (score, dementia) => {
 		return 'A';
 	}
 
+	if (timeAndSpace && !dementia) {
+		return 'A';
+	}
+
 	if (dementia) {
 		return 'D';
 	}

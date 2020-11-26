@@ -24,13 +24,8 @@ test('should set time and space to 1 if not provided', t => {
 test('should detect category O', t => {
 	t.is(katzCategory('11111111'), 'O');
 	t.is(katzCategory('11222222'), 'O');
-	t.is(katzCategory('11333333'), 'O');
-	t.is(katzCategory('11444444'), 'O');
 	t.is(katzCategory('22222222'), 'O');
-	t.is(katzCategory('22333333'), 'O');
-	t.is(katzCategory('22444444'), 'O');
 	t.is(katzCategory('11242424'), 'O');
-	t.is(katzCategory('22343434'), 'O');
 });
 
 test('should detect category D when category O with dementia', t => {
@@ -45,16 +40,29 @@ test('should detect category D when category O with dementia', t => {
 	t.is(katzCategory('22343434', true), 'D');
 });
 
-test('should detect category A', t => {
+test('should detect category A when physically dependent', t => {
 	t.is(katzCategory('33111111'), 'A');
 	t.is(katzCategory('33121212'), 'A');
 	t.is(katzCategory('33222222'), 'A');
+});
+
+test('should detect category A when psychologically dependent', t => {
+	t.is(katzCategory('22343434'), 'A');
+	t.is(katzCategory('22333333'), 'A');
+	t.is(katzCategory('22444444'), 'A');
+	t.is(katzCategory('11333333'), 'A');
+	t.is(katzCategory('11444444'), 'A');
 });
 
 test('shoetect category D when category A with dementia', t => {
 	t.is(katzCategory('33111111', true), 'D');
 	t.is(katzCategory('33121212', true), 'D');
 	t.is(katzCategory('33222222', true), 'D');
+	t.is(katzCategory('22343434', true), 'D');
+	t.is(katzCategory('22333333', true), 'D');
+	t.is(katzCategory('22444444', true), 'D');
+	t.is(katzCategory('11333333', true), 'D');
+	t.is(katzCategory('11444444', true), 'D');
 });
 
 test('should detect category B which are physically dependent', t => {
