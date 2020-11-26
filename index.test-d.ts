@@ -1,6 +1,6 @@
-import {expectType} from 'tsd-check';
-import katzCategory from '.';
+import {expectType} from 'tsd';
+import katzCategory, {Category} from '.';
 
-expectType<string>(katzCategory('11111111'));
-expectType<string>(katzCategory('11111111', false));
-expectType<string>(katzCategory('11111111', true));
+expectType<Category>(katzCategory('11111111'));
+expectType<Category>(katzCategory('11111111', false));
+expectType<Category>(katzCategory('11111111', true));
